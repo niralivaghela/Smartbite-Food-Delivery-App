@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Gradient ring rotated by Java ObjectAnimator for breathing effect -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="ring"
+    android:innerRadiusRatio="2.8"
+    android:thicknessRatio="12"
+    android:useLevel="false">
+    <gradient android:startColor="#FC8019" android:centerColor="#FFD54F"
+        android:endColor="#FF5722" android:type="sweep"/>
+    <size android:width="96dp" android:height="96dp"/>
+</shape>
