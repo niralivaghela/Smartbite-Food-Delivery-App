@@ -1,0 +1,807 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  fragment_orders.xml  ·  SmartBite Enhanced
+  ─────────────────────────────────────────────────────────────────────────
+  NEW ADVANCED FEATURES:
+  • Animated gradient header with cart badge
+  • Live "pulse" ETA chip on active order card
+  • Glowing animated step-tracker with check icons
+  • Animated progress bar under active order
+  • Scratch card with shimmer overlay
+  • Coupon cards with dashed border & discount badge
+  • Empty-state with illustration + CTA button
+  • Filter chip row (All / Active / Delivered)
+  • Past-orders RecyclerView with dividers
+  ─────────────────────────────────────────────────────────────────────────
+-->
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background">
+
+    <!-- ══ COLLAPSING APP BAR ══════════════════════════════════════════ -->
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarOrders"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="4dp"
+        app:liftOnScroll="true">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbarOrders"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@drawable/bg_primary_gradient"
+            app:title="My Orders"
+            app:titleTextColor="@color/white"
+            app:titleTextAppearance="@style/TextAppearance.SmartBite.Toolbar">
+
+            <!-- Cart FAB badge inside toolbar -->
+            <FrameLayout
+                android:id="@+id/btnCartBadge"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="end"
+                android:layout_marginEnd="12dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="@drawable/bg_circle_white_alpha">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="🛒"
+                    android:textSize="18sp"/>
+
+                <TextView
+                    android:id="@+id/tvCartCount"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_gravity="top|end"
+                    android:background="@drawable/bg_badge_red"
+                    android:gravity="center"
+                    android:text="0"
+                    android:textColor="@color/white"
+                    android:textSize="9sp"
+                    android:textStyle="bold"
+                    android:visibility="gone"/>
+            </FrameLayout>
+        </com.google.android.material.appbar.MaterialToolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <!-- ══ SCROLLABLE CONTENT ══════════════════════════════════════════ -->
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollOrders"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="88dp">
+
+            <!-- ══ FILTER CHIPS ════════════════════════════════════════ -->
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="none"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:paddingTop="12dp"
+                android:paddingBottom="4dp">
+
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/chipGroupOrdersFilter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:singleSelection="true"
+                    app:selectionRequired="true"
+                    app:chipSpacingHorizontal="6dp">
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chipFilterAll"
+                        style="@style/Widget.MaterialComponents.Chip.Filter"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="All"
+                        android:checked="true"
+                        app:chipBackgroundColor="@color/chip_selector"
+                        app:checkedIconTint="@color/white"/>
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chipFilterActive"
+                        style="@style/Widget.MaterialComponents.Chip.Filter"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="🔴 Active"
+                        app:chipBackgroundColor="@color/chip_selector"/>
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chipFilterDelivered"
+                        style="@style/Widget.MaterialComponents.Chip.Filter"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="✅ Delivered"
+                        app:chipBackgroundColor="@color/chip_selector"/>
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chipFilterCancelled"
+                        style="@style/Widget.MaterialComponents.Chip.Filter"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="❌ Cancelled"
+                        app:chipBackgroundColor="@color/chip_selector"/>
+                </com.google.android.material.chip.ChipGroup>
+            </HorizontalScrollView>
+
+            <!-- ══ ACTIVE ORDER TRACKER (hidden when none) ════════════ -->
+            <LinearLayout
+                android:id="@+id/layoutActiveOrder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="4dp"
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="8dp"
+                    app:cardBackgroundColor="@color/white"
+                    app:strokeColor="@color/primary_light"
+                    app:strokeWidth="1dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="18dp">
+
+                        <!-- Top row: restaurant name + ETA pulse chip -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:layout_marginBottom="2dp">
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/tvActiveRestaurant"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="16sp"
+                                    android:textColor="@color/primary"
+                                    android:textStyle="bold"/>
+
+                                <TextView
+                                    android:id="@+id/tvActiveItems"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="12sp"
+                                    android:textColor="@color/text_secondary"
+                                    android:layout_marginTop="2dp"/>
+                            </LinearLayout>
+
+                            <!-- Animated ETA chip -->
+                            <LinearLayout
+                                android:id="@+id/layoutEtaChip"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:gravity="center_vertical"
+                                android:background="@drawable/bg_eta_chip"
+                                android:paddingStart="10dp"
+                                android:paddingEnd="10dp"
+                                android:paddingTop="5dp"
+                                android:paddingBottom="5dp">
+
+                                <View
+                                    android:id="@+id/etaPulseDot"
+                                    android:layout_width="7dp"
+                                    android:layout_height="7dp"
+                                    android:layout_marginEnd="5dp"
+                                    android:background="@drawable/bg_circle_orange"/>
+
+                                <TextView
+                                    android:id="@+id/tvEta"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="~20 min"
+                                    android:textColor="@color/primary"
+                                    android:textSize="11sp"
+                                    android:textStyle="bold"/>
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <!-- Status label with animated icon -->
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginBottom="16dp">
+
+                            <TextView
+                                android:id="@+id/tvStatusIcon"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="📋"
+                                android:textSize="16sp"
+                                android:layout_marginEnd="6dp"/>
+
+                            <TextView
+                                android:id="@+id/tvActiveStatus"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="14sp"
+                                android:textColor="@color/text_primary"
+                                android:textStyle="bold"/>
+                        </LinearLayout>
+
+                        <!-- ── ANIMATED STEP TRACKER ───────────────────────── -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical">
+
+                            <!-- Step 1: Placed -->
+                            <LinearLayout android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical" android:gravity="center">
+                                <FrameLayout android:layout_width="32dp" android:layout_height="32dp">
+                                    <View android:id="@+id/stepPlaced"
+                                        android:layout_width="32dp" android:layout_height="32dp"
+                                        android:background="@drawable/bg_step_circle_active"/>
+                                    <TextView android:id="@+id/stepPlacedIcon"
+                                        android:layout_width="match_parent" android:layout_height="match_parent"
+                                        android:gravity="center" android:text="✓"
+                                        android:textColor="@color/white" android:textSize="13sp"
+                                        android:textStyle="bold"/>
+                                </FrameLayout>
+                                <TextView android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:text="Placed" android:textSize="9sp"
+                                    android:textColor="@color/primary" android:textStyle="bold"/>
+                            </LinearLayout>
+
+                            <View android:id="@+id/linePlacedConfirmed"
+                                android:layout_width="0dp" android:layout_height="3dp"
+                                android:layout_weight="1" android:background="@drawable/bg_step_line"
+                                android:layout_marginBottom="14dp"/>
+
+                            <!-- Step 2: Confirmed -->
+                            <LinearLayout android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical" android:gravity="center">
+                                <FrameLayout android:layout_width="32dp" android:layout_height="32dp">
+                                    <View android:id="@+id/stepConfirmed"
+                                        android:layout_width="32dp" android:layout_height="32dp"
+                                        android:background="@drawable/bg_step_circle_inactive"/>
+                                    <TextView android:id="@+id/stepConfirmedIcon"
+                                        android:layout_width="match_parent" android:layout_height="match_parent"
+                                        android:gravity="center" android:text="2"
+                                        android:textColor="@color/text_secondary" android:textSize="12sp"
+                                        android:textStyle="bold"/>
+                                </FrameLayout>
+                                <TextView android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:text="Confirmed" android:textSize="9sp"
+                                    android:textColor="@color/text_secondary"/>
+                            </LinearLayout>
+
+                            <View android:id="@+id/lineConfirmedPreparing"
+                                android:layout_width="0dp" android:layout_height="3dp"
+                                android:layout_weight="1" android:background="#DDDDDD"
+                                android:layout_marginBottom="14dp"/>
+
+                            <!-- Step 3: Preparing -->
+                            <LinearLayout android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical" android:gravity="center">
+                                <FrameLayout android:layout_width="32dp" android:layout_height="32dp">
+                                    <View android:id="@+id/stepPreparing"
+                                        android:layout_width="32dp" android:layout_height="32dp"
+                                        android:background="@drawable/bg_step_circle_inactive"/>
+                                    <TextView android:id="@+id/stepPreparingIcon"
+                                        android:layout_width="match_parent" android:layout_height="match_parent"
+                                        android:gravity="center" android:text="3"
+                                        android:textColor="@color/text_secondary" android:textSize="12sp"
+                                        android:textStyle="bold"/>
+                                </FrameLayout>
+                                <TextView android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:text="Cooking" android:textSize="9sp"
+                                    android:textColor="@color/text_secondary"/>
+                            </LinearLayout>
+
+                            <View android:id="@+id/linePreparingDelivery"
+                                android:layout_width="0dp" android:layout_height="3dp"
+                                android:layout_weight="1" android:background="#DDDDDD"
+                                android:layout_marginBottom="14dp"/>
+
+                            <!-- Step 4: On the Way -->
+                            <LinearLayout android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical" android:gravity="center">
+                                <FrameLayout android:layout_width="32dp" android:layout_height="32dp">
+                                    <View android:id="@+id/stepDelivery"
+                                        android:layout_width="32dp" android:layout_height="32dp"
+                                        android:background="@drawable/bg_step_circle_inactive"/>
+                                    <TextView android:id="@+id/stepDeliveryIcon"
+                                        android:layout_width="match_parent" android:layout_height="match_parent"
+                                        android:gravity="center" android:text="4"
+                                        android:textColor="@color/text_secondary" android:textSize="12sp"
+                                        android:textStyle="bold"/>
+                                </FrameLayout>
+                                <TextView android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:text="On Way" android:textSize="9sp"
+                                    android:textColor="@color/text_secondary"/>
+                            </LinearLayout>
+
+                            <View android:id="@+id/lineDeliveryDelivered"
+                                android:layout_width="0dp" android:layout_height="3dp"
+                                android:layout_weight="1" android:background="#DDDDDD"
+                                android:layout_marginBottom="14dp"/>
+
+                            <!-- Step 5: Delivered -->
+                            <LinearLayout android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical" android:gravity="center">
+                                <FrameLayout android:layout_width="32dp" android:layout_height="32dp">
+                                    <View android:id="@+id/stepDelivered"
+                                        android:layout_width="32dp" android:layout_height="32dp"
+                                        android:background="@drawable/bg_step_circle_inactive"/>
+                                    <TextView android:id="@+id/stepDeliveredIcon"
+                                        android:layout_width="match_parent" android:layout_height="match_parent"
+                                        android:gravity="center" android:text="5"
+                                        android:textColor="@color/text_secondary" android:textSize="12sp"
+                                        android:textStyle="bold"/>
+                                </FrameLayout>
+                                <TextView android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:text="Done" android:textSize="9sp"
+                                    android:textColor="@color/text_secondary"/>
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <!-- Animated progress bar under stepper -->
+                        <com.google.android.material.progressindicator.LinearProgressIndicator
+                            android:id="@+id/progressOrder"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            app:trackCornerRadius="4dp"
+                            app:trackThickness="6dp"
+                            app:indicatorColor="@color/primary"
+                            app:trackColor="@color/divider"
+                            android:progress="20"
+                            app:indicatorDirectionLinear="startToEnd"/>
+
+                        <!-- Track order map button -->
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnTrackMap"
+                            android:layout_width="match_parent"
+                            android:layout_height="44dp"
+                            android:layout_marginTop="14dp"
+                            android:text="📍 Track on Map"
+                            android:textSize="13sp"
+                            android:textStyle="bold"
+                            app:backgroundTint="@color/primary"
+                            app:cornerRadius="12dp"
+                            app:icon="@null"/>
+
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
+
+            <!-- ══ SCRATCH CARD ════════════════════════════════════════ -->
+            <LinearLayout
+                android:id="@+id/layoutScratchCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:paddingTop="12dp"
+                android:paddingBottom="4dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="🎁  Scratch &amp; Win a reward!"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/text_primary"
+                    android:layout_marginBottom="10dp"/>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="110dp"
+                    app:cardCornerRadius="18dp"
+                    app:cardElevation="6dp"
+                    app:strokeColor="@color/primary_light"
+                    app:strokeWidth="1dp">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <!-- Reward revealed -->
+                        <LinearLayout
+                            android:id="@+id/tvScratchReward"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:background="@drawable/bg_scratch_revealed"
+                            android:visibility="gone">
+
+                            <TextView android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="🎉" android:textSize="30sp"/>
+                            <TextView android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="₹50 OFF on next order!"
+                                android:textSize="16sp" android:textStyle="bold"
+                                android:textColor="@color/primary"/>
+                            <TextView android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Code: LUCKY50  ·  Tap to copy"
+                                android:textSize="12sp" android:textColor="@color/text_secondary"/>
+                        </LinearLayout>
+
+                        <!-- Scratch surface with shimmer -->
+                        <com.facebook.shimmer.ShimmerFrameLayout
+                            android:id="@+id/shimmerScratch"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            app:shimmer_base_alpha="0.7"
+                            app:shimmer_highlight_alpha="1.0"
+                            app:shimmer_duration="1500">
+
+                            <LinearLayout
+                                android:id="@+id/cardScratch"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical"
+                                android:gravity="center"
+                                android:background="@drawable/bg_scratch_surface"
+                                android:clickable="true"
+                                android:focusable="true">
+
+                                <TextView android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="🪙" android:textSize="36sp"/>
+                                <TextView android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Tap to scratch &amp; win!"
+                                    android:textSize="14sp" android:textStyle="bold"
+                                    android:textColor="@color/white"
+                                    android:layout_marginTop="4dp"/>
+                            </LinearLayout>
+                        </com.facebook.shimmer.ShimmerFrameLayout>
+
+                    </FrameLayout>
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
+
+            <!-- ══ COUPONS SECTION ════════════════════════════════════ -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:paddingTop="14dp"
+                android:paddingBottom="4dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="10dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="🏷️  Available Coupons"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/text_primary"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="See all ›"
+                        android:textSize="12sp"
+                        android:textColor="@color/primary"
+                        android:textStyle="bold"/>
+                </LinearLayout>
+
+                <!-- Coupon 1: FIRST50 -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    app:cardCornerRadius="14dp"
+                    app:cardElevation="3dp"
+                    app:strokeColor="@color/primary_light"
+                    app:strokeWidth="1dp"
+                    app:cardBackgroundColor="@color/white">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:padding="14dp">
+
+                        <!-- Discount badge circle -->
+                        <FrameLayout
+                            android:layout_width="64dp"
+                            android:layout_height="64dp">
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:background="@drawable/bg_coupon_circle">
+                                <TextView android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="50%"
+                                    android:textColor="@color/white"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold"/>
+                            </LinearLayout>
+                        </FrameLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:paddingStart="12dp">
+
+                            <TextView android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="FIRST50"
+                                android:textSize="15sp"
+                                android:textStyle="bold"
+                                android:textColor="@color/text_primary"/>
+
+                            <TextView android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="50% off up to ₹100 on first order"
+                                android:textSize="12sp"
+                                android:textColor="@color/text_secondary"
+                                android:layout_marginTop="2dp"/>
+
+                            <TextView android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="⏰ Expires in 2 days"
+                                android:textSize="10sp"
+                                android:textColor="#FF9800"
+                                android:layout_marginTop="3dp"/>
+                        </LinearLayout>
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnApplyFirst50"
+                            android:layout_width="wrap_content"
+                            android:layout_height="36dp"
+                            android:text="APPLY"
+                            android:textSize="11sp"
+                            android:textStyle="bold"
+                            app:backgroundTint="@color/primary"
+                            app:cornerRadius="20dp"/>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- Coupon 2: FREEDEL -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    app:cardCornerRadius="14dp"
+                    app:cardElevation="3dp"
+                    app:strokeColor="#4CAF5050"
+                    app:strokeWidth="1dp"
+                    app:cardBackgroundColor="@color/white">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:padding="14dp">
+
+                        <FrameLayout
+                            android:layout_width="64dp"
+                            android:layout_height="64dp">
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:background="@drawable/bg_coupon_circle_green">
+                                <TextView android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="FREE\nDEL"
+                                    android:textColor="@color/white"
+                                    android:textSize="11sp"
+                                    android:textStyle="bold"
+                                    android:gravity="center"/>
+                            </LinearLayout>
+                        </FrameLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:paddingStart="12dp">
+
+                            <TextView android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="FREEDEL"
+                                android:textSize="15sp"
+                                android:textStyle="bold"
+                                android:textColor="@color/text_primary"/>
+
+                            <TextView android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Free delivery on orders above ₹199"
+                                android:textSize="12sp"
+                                android:textColor="@color/text_secondary"
+                                android:layout_marginTop="2dp"/>
+
+                            <TextView android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="✅ No expiry"
+                                android:textSize="10sp"
+                                android:textColor="#4CAF50"
+                                android:layout_marginTop="3dp"/>
+                        </LinearLayout>
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnApplyFreedel"
+                            android:layout_width="wrap_content"
+                            android:layout_height="36dp"
+                            android:text="APPLY"
+                            android:textSize="11sp"
+                            android:textStyle="bold"
+                            app:backgroundTint="#4CAF50"
+                            app:cornerRadius="20dp"/>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
+
+            <!-- ══ PAST ORDERS HEADER ══════════════════════════════════ -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:paddingTop="16dp"
+                android:paddingBottom="8dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="📜  Order History"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/text_primary"/>
+
+                <TextView
+                    android:id="@+id/tvOrderCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textSize="12sp"
+                    android:textColor="@color/text_secondary"/>
+            </LinearLayout>
+
+            <!-- Shimmer for past orders loading -->
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:id="@+id/shimmerPastOrders"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                app:shimmer_duration="1000"
+                android:visibility="visible">
+                <LinearLayout android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:orientation="vertical">
+                    <include layout="@layout/item_shimmer_order"/>
+                    <include layout="@layout/item_shimmer_order"/>
+                    <include layout="@layout/item_shimmer_order"/>
+                </LinearLayout>
+            </com.facebook.shimmer.ShimmerFrameLayout>
+
+            <!-- Past orders list -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvPastOrders"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:nestedScrollingEnabled="false"
+                android:clipToPadding="false"
+                android:visibility="gone"/>
+
+            <!-- ══ EMPTY STATE ═════════════════════════════════════════ -->
+            <LinearLayout
+                android:id="@+id/layoutEmpty"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:paddingTop="48dp"
+                android:paddingBottom="48dp"
+                android:paddingStart="32dp"
+                android:paddingEnd="32dp"
+                android:visibility="gone">
+
+                <TextView android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="🛵" android:textSize="72sp"/>
+
+                <TextView android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="No orders yet!"
+                    android:textSize="20sp" android:textStyle="bold"
+                    android:textColor="@color/text_primary"
+                    android:gravity="center"/>
+
+                <TextView android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Hungry? Browse restaurants and place your first order 🍔"
+                    android:textSize="14sp" android:textColor="@color/text_secondary"
+                    android:gravity="center"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnExploreNow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="24dp"
+                    android:text="🍽️  Explore Restaurants"
+                    android:textStyle="bold"
+                    app:backgroundTint="@color/primary"
+                    app:cornerRadius="24dp"/>
+            </LinearLayout>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="item_count">
+        <item quantity="one">%d item</item>
+        <item quantity="other">%d items</item>
+    </plurals>
+
+    <!-- ✅ Added for HomeFragment restaurant count -->
+    <plurals name="restaurant_count">
+        <item quantity="one">%d restaurant</item>
+        <item quantity="other">%d restaurants</item>
+    </plurals>
+
+    <plurals name="label_item_count">
+        <item quantity="one">%1$d item</item>
+        <item quantity="other">%1$d items</item>
+    </plurals>
+
+    <plurals name="order_count">
+        <item quantity="one">%d order</item>
+        <item quantity="other">%d orders</item>
+    </plurals>
+</resources>

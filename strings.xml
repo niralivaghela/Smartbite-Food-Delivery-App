@@ -1,0 +1,542 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SmartBite</string>
+    <string name="tagline">Food at your fingertips 🍕</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="email">Email Address</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="full_name">Full Name</string>
+    <string name="phone">Phone Number</string>
+    <string name="place_order">Place Order</string>
+    <string name="add_to_cart">Add to Cart</string>
+    <string name="view_cart">View Cart</string>
+    <string name="checkout">Checkout</string>
+    <string name="track_order">Track Order</string>
+    <string name="food_image_desc">Food image</string>
+    <string name="item_name_placeholder">Item Name</string>
+    <string name="price_placeholder">₹0</string>
+    <string name="quantity_placeholder">1</string>
+    <string name="decrease_quantity">Decrease quantity</string>
+    <string name="increase_quantity">Increase quantity</string>
+    <string name="remove_item">Remove item</string>
+    <string name="loading">Loading…</string>
+    <string name="retry">Retry</string>
+    <string name="cancel">Cancel</string>
+    <string name="save">Save</string>
+    <string name="delete">Delete</string>
+    <string name="edit">Edit</string>
+    <string name="ok">OK</string>
+    <string name="empty_cart">Your cart is empty</string>
+    <string name="empty_orders">No orders yet</string>
+    <string name="restaurant_image_desc">Restaurant image</string>
+    <string name="profile_picture_desc">Profile picture</string>
+    <string name="verify_otp">Verify OTP</string>
+    <string name="resend_otp">Resend OTP</string>
+    <string name="nav_home">Home</string>
+    <string name="nav_search">Search</string>
+    <string name="nav_orders">Orders</string>
+    <string name="nav_profile">Profile</string>
+
+    <!-- Achievements -->
+    <string name="achievement_points">+%1$d pts</string>
+    <string name="achievement_progress">%1$d / %2$d</string>
+    <string name="achievement_unlocked">✓ Unlocked</string>
+    <string name="label_achievements">Achievements 🏆</string>
+
+    <!-- Admin actions -->
+    <string name="action_approve">Approve</string>
+    <string name="action_suspend">Suspend</string>
+    <string name="action_delete">Delete</string>
+    <string name="status_approved">Approved</string>
+    <string name="status_pending">Pending</string>
+    <string name="status_suspended">Suspended</string>
+    <string name="status_banned">Banned</string>
+    <string name="status_active">Active</string>
+
+    <!-- Meal Plans -->
+    <string name="price_weekly">₹%1$s/week</string>
+    <string name="price_monthly">₹%1$s/month</string>
+    <string name="action_subscribe">Subscribe 🚀</string>
+    <string name="label_meal_plans">Meal Plans 🥗</string>
+    <string name="label_meals_per_week">%1$d meals/week</string>
+    <string name="msg_subscribed">🎉 Subscribed to %1$s plan!</string>
+    <string name="msg_plan_active">✅ Active Plan: %1$s</string>
+
+    <!-- Menu / Restaurant -->
+    <string name="price_rupee">₹%1$s</string>
+    <string name="action_add">ADD +</string>
+    <string name="status_unavailable">Unavailable</string>
+    <string name="action_edit">Edit</string>
+    <string name="toggle_availability_desc">Toggle item availability</string>
+    <string name="label_veg">VEG</string>
+    <string name="label_non_veg">NON-VEG</string>
+    <string name="label_rating">%1$.1f ★</string>
+    <string name="label_delivery_time">%1$d mins</string>
+    <string name="label_free_delivery_short">Free delivery</string>
+    <string name="label_delivery_charge">₹%1$d delivery</string>
+
+    <!-- Orders -->
+    <string name="order_id_prefix">#%1$s</string>
+    <string name="order_id_format">#%s</string>
+    <string name="amount_format">₹%.0f</string>
+    <string name="accept">Accept</string>
+    <string name="reject">Reject</string>
+    <string name="mark_ready">Mark Ready</string>
+    <string name="delivery_fee_format">₹%.0f delivery</string>
+    <string name="prep_time_format">%d mins</string>
+    <string name="status_open">OPEN</string>
+    <string name="status_closed">CLOSED</string>
+    <string name="label_order_total">Total: ₹%1$.0f</string>
+    <string name="label_reorder">Reorder 🔄</string>
+    <string name="label_rate_order">Rate Order ⭐</string>
+
+    <!-- Checkout -->
+    <string name="error_add_delivery_address">Please add delivery address</string>
+    <string name="hint_tap_to_add_address">Tap to add delivery address</string>
+    <string name="hint_enter_delivery_address">Enter full delivery address</string>
+    <string name="title_delivery_address">Delivery Address</string>
+    <string name="error_insufficient_wallet">Insufficient wallet balance!</string>
+    <string name="error_payment">Payment Error: %s</string>
+    <string name="error_order_failed">Order failed: %s</string>
+    <string name="label_placing_order">Placing Order…</string>
+    <string name="label_place_order">PLACE ORDER 🍕</string>
+    <string name="label_subtotal">Subtotal</string>
+    <string name="label_delivery_fee">Delivery Fee</string>
+    <string name="label_discount">Discount</string>
+    <string name="label_grand_total">Grand Total</string>
+    <string name="label_payment_method">Payment Method</string>
+    <string name="label_cod">Cash on Delivery</string>
+    <string name="label_online">Online Payment</string>
+    <string name="label_wallet_pay">SmartBite Wallet</string>
+
+    <!-- Common actions -->
+    <string name="action_save">Save</string>
+    <string name="action_cancel">Cancel</string>
+    <string name="action_share">Share</string>
+    <string name="action_copy">Copy</string>
+    <string name="action_view">View</string>
+    <string name="action_track">Track Order</string>
+    <string name="action_reorder">Reorder</string>
+    <string name="action_call">Call</string>
+    <string name="action_map">Open Map</string>
+
+    <!-- Payment messages -->
+    <string name="msg_payment_success">Payment Successful! 🎉</string>
+    <string name="msg_payment_failed">Payment Failed!</string>
+
+    <!-- Profile -->
+    <string name="placeholder_user_name">User Name</string>
+    <string name="placeholder_user_email">user@email.com</string>
+    <string name="placeholder_wallet_balance">₹0</string>
+    <string name="placeholder_points">0 pts</string>
+    <string name="label_points">Points 🌟</string>
+    <string name="label_wallet">Wallet 💰</string>
+    <string name="label_group_order">Group Order 👥</string>
+    <string name="label_dark_mode">Dark Mode 🌙</string>
+    <string name="label_logout">Logout</string>
+    <string name="label_orders_history">Order History 📋</string>
+    <string name="label_settings">Settings ⚙️</string>
+    <string name="label_help">Help &amp; Support 💬</string>
+    <string name="label_about">About SmartBite</string>
+    <string name="label_edit_profile">Edit Profile</string>
+    <string name="label_referral">Refer &amp; Earn 🎁</string>
+    <string name="label_notifications">Notifications 🔔</string>
+
+    <!-- Search -->
+    <string name="hint_search_restaurants">Search restaurants or food…</string>
+    <string name="hint_voice_search">Say a restaurant name…</string>
+    <string name="label_results_found">%1$d restaurants found</string>
+    <string name="label_no_results">No results for \"%1$s\"</string>
+    <string name="label_popular_searches">Popular Searches</string>
+    <string name="label_recent_searches">Recent Searches</string>
+
+    <!-- Menu management -->
+    <string name="action_add_item">Add Item</string>
+    <string name="title_add_item">Add Menu Item</string>
+    <string name="title_edit_item">Edit Menu Item</string>
+    <string name="title_delete_item">Delete %s?</string>
+    <string name="hint_item_name">Item Name *</string>
+    <string name="hint_item_price">Price (₹) *</string>
+    <string name="hint_item_description">Description</string>
+    <string name="hint_item_category">Category</string>
+    <string name="error_fill_required_fields">Please fill required fields</string>
+    <string name="msg_item_added">Item Added! ✅</string>
+    <string name="msg_item_updated">Item Updated!</string>
+    <string name="msg_item_deleted">Deleted</string>
+    <string name="msg_item_available">Available ✅</string>
+    <string name="msg_item_unavailable">Unavailable ❌</string>
+
+    <!-- Order management chips -->
+    <string name="chip_all">All</string>
+    <string name="chip_new">New 🆕</string>
+    <string name="chip_preparing">Preparing 👨‍🍳</string>
+    <string name="chip_ready">Ready ✅</string>
+    <string name="chip_delivered">Delivered 🎉</string>
+    <string name="chip_cancelled">Cancelled ❌</string>
+
+    <!-- Order status -->
+    <string name="msg_status_updated">Status updated!</string>
+    <string name="msg_order_rejected">Order Rejected</string>
+    <string name="title_reject_order">Reject Order</string>
+    <string name="reject_reason_stock">Out of stock</string>
+    <string name="reject_reason_busy">Too busy right now</string>
+    <string name="reject_reason_closing">Closing soon</string>
+    <string name="reject_reason_other">Other reason</string>
+    <string name="msg_order_accepted">Order accepted! 🎉</string>
+    <string name="msg_order_ready">Order is ready for pickup! 🛵</string>
+    <string name="label_otp">OTP: %1$s</string>
+
+    <!-- Revenue -->
+    <string name="label_total_revenue">Total Revenue</string>
+    <string name="label_total_orders">Total Orders</string>
+    <string name="label_today_revenue">Today\'s Revenue</string>
+    <string name="label_avg_order">Avg. Order Value</string>
+    <string name="label_weekly_revenue">Weekly Revenue</string>
+    <string name="label_order_status_breakdown">Order Status Breakdown</string>
+    <string name="placeholder_amount">₹0</string>
+    <string name="label_revenue_chart">Revenue Chart 📊</string>
+
+    <!-- Admin dashboard -->
+    <string name="label_total_users">Total Users</string>
+    <string name="label_active_restaurants">Active Restaurants</string>
+    <string name="label_pending_approvals">Pending Approvals</string>
+    <string name="label_today_orders">Today\'s Orders</string>
+    <string name="msg_restaurant_approved">Restaurant approved! ✅</string>
+    <string name="msg_restaurant_suspended">Restaurant suspended.</string>
+    <string name="msg_user_banned">User banned.</string>
+    <string name="msg_user_unbanned">User unbanned. ✅</string>
+    <string name="title_approve_restaurant">Approve Restaurant?</string>
+    <string name="title_suspend_restaurant">Suspend Restaurant?</string>
+    <string name="title_delete_restaurant">Delete Restaurant?</string>
+    <string name="title_ban_user">Ban User?</string>
+    <string name="msg_confirm_approve">Approve %1$s and make it visible to customers?</string>
+    <string name="msg_confirm_suspend">Suspend %1$s? It will be hidden from customers.</string>
+    <string name="msg_confirm_delete">Permanently delete %1$s? This cannot be undone.</string>
+    <string name="msg_confirm_ban">Ban this user? They will not be able to log in.</string>
+
+    <!-- Login / Register -->
+    <string name="btn_login">LOGIN</string>
+    <string name="btn_loading">Please wait…</string>
+    <string name="btn_register">CREATE ACCOUNT</string>
+    <string name="btn_google_signin">Continue with Google</string>
+    <string name="error_valid_email">Valid email required</string>
+    <string name="error_password_length">Password must be at least 6 characters</string>
+    <string name="error_passwords_no_match">Passwords do not match</string>
+    <string name="error_enter_name">Enter your name</string>
+    <string name="error_enter_phone">Enter your phone number</string>
+    <string name="error_enter_email_reset">Enter email to reset password</string>
+    <string name="error_login_failed">Login Failed: %s</string>
+    <string name="error_register_failed">Registration Failed: %s</string>
+    <string name="error_google_signin">Google Sign-In Failed</string>
+    <string name="error_auth_failed">Authentication Failed</string>
+    <string name="error_save_user">Failed to save user: %s</string>
+    <string name="error_generic">Error: %s</string>
+    <string name="msg_reset_email_sent">Reset email sent! Check your inbox ✉️</string>
+    <string name="msg_register_success">Account created! Welcome to SmartBite 🎉</string>
+    <string name="label_already_have_account">Already have an account?</string>
+    <string name="label_no_account">Don\'t have an account?</string>
+    <string name="label_forgot_password">Forgot Password?</string>
+    <string name="label_skip">Skip for now</string>
+    <string name="label_select_role">I am a…</string>
+    <string name="role_customer">Customer 🛒</string>
+    <string name="role_restaurant">Restaurant Owner 🏪</string>
+
+    <!-- Home screen greetings -->
+    <string name="greeting_morning">Good Morning ☀️</string>
+    <string name="greeting_afternoon">Good Afternoon 🌤️</string>
+    <string name="greeting_evening">Good Evening 🌙</string>
+    <string name="label_what_to_eat">What would you like to eat?</string>
+    <string name="label_nearby">Nearby Restaurants</string>
+    <string name="label_top_rated">Top Rated 🌟</string>
+    <string name="label_see_all">See All</string>
+    <string name="label_categories">Categories</string>
+
+    <!-- Order Tracking -->
+    <string name="label_restaurant">Restaurant</string>
+    <string name="label_order_id_prefix">Order #%1$s</string>
+    <string name="label_rupee_amount">₹%1$d</string>
+    <string name="label_rupee_amount_float">₹%1$s</string>
+    <string name="label_est_delivery">Est. Delivery: %1$s</string>
+    <string name="label_call_agent">Call Rider 📞</string>
+    <string name="label_live_tracking">Live Tracking 🗺️</string>
+
+    <string name="status_placed">Order Placed 📋</string>
+    <string name="status_confirmed">Order Confirmed ✅</string>
+    <string name="status_preparing">Preparing your food 👨‍🍳</string>
+    <string name="status_out_for_delivery">Out for Delivery 🛵</string>
+    <string name="status_delivered">Delivered! 🎉</string>
+    <string name="status_cancelled">Cancelled ❌</string>
+
+    <string name="status_sub_placed">Waiting for restaurant confirmation</string>
+    <string name="status_sub_confirmed">The restaurant has accepted your order</string>
+    <string name="status_sub_preparing">Your order is being prepared with love</string>
+    <string name="status_sub_out_for_delivery">Your delivery agent is on the way!</string>
+    <string name="status_sub_delivered">Enjoy your meal! 😋</string>
+    <string name="status_sub_cancelled">Your order has been cancelled</string>
+
+    <string name="est_time_placed">~35 minutes</string>
+    <string name="est_time_confirmed">~30 minutes</string>
+    <string name="est_time_preparing">~20 minutes</string>
+    <string name="est_time_out_for_delivery">~5 minutes</string>
+    <string name="est_time_delivered">Delivered!</string>
+
+    <!-- Cart -->
+    <string name="msg_item_removed">%1$s removed</string>
+    <string name="msg_coupon_already_applied">✅ %1$s is already applied!</string>
+    <string name="msg_add_more_for_free_delivery">Add ₹%1$d more for free delivery 🚚</string>
+    <string name="msg_coupon_saved">🎉 You save ₹%1$d with %2$s!</string>
+    <string name="error_enter_promo">Please enter a promo code</string>
+    <string name="error_invalid_promo">❌ Invalid promo code</string>
+    <string name="title_remove_item">Remove Item</string>
+    <string name="msg_confirm_remove">Remove \"%1$s\" from cart?</string>
+    <string name="action_remove">Remove</string>
+    <string name="action_undo">UNDO</string>
+    <string name="label_apply">APPLY</string>
+    <string name="label_promo_hint">Enter promo code</string>
+    <string name="label_free_delivery_applied">🎉 Free delivery applied!</string>
+    <string name="title_clear_cart">Clear Cart?</string>
+    <string name="msg_confirm_clear_cart">Remove all items from your cart?</string>
+
+    <!-- Order Success -->
+    <string name="label_order_from">from %1$s</string>
+    <string name="msg_almost_there">Almost there! 🚀</string>
+    <string name="label_order_confirmed">Order Confirmed! 🎉</string>
+    <string name="label_order_id_detail">Order ID: #%1$s</string>
+    <string name="label_estimated_time">Estimated: %1$d–%2$d mins</string>
+    <string name="msg_enjoy_meal">Sit back and relax, food is on its way! 🛵</string>
+
+    <!-- RestaurantDetailActivity -->
+    <string name="label_prep_time_min">⏱ %1$d min</string>
+    <string name="label_free_delivery">🚚 Free delivery</string>
+    <string name="label_delivery_fee_amount">🚚 ₹%1$d</string>
+    <string name="label_added_qty">✓ %1$d</string>
+    <string name="error_add_items_first">Add items first!</string>
+    <string name="msg_item_added_to_cart">%1$s added! 🛒</string>
+    <string name="label_view_cart_items">View Cart • %1$d items • ₹%2$.0f</string>
+    <string name="msg_clear_cart_warning">You already have items from another restaurant. Clear cart and add new items?</string>
+    <string name="action_clear_and_add">Clear &amp; Add</string>
+
+    <!-- Wallet -->
+    <string name="title_wallet">My Wallet 💰</string>
+    <string name="label_add_money">Add Money</string>
+    <string name="label_add_custom">Add Custom Amount</string>
+    <string name="label_transaction_history">Transaction History</string>
+    <string name="label_no_transactions">No transactions yet</string>
+    <string name="msg_money_added">✅ ₹%1$.0f added to wallet!</string>
+    <string name="msg_confirm_add_money">Add ₹%.0f to your SmartBite Wallet?\n\nYou\'ll earn %.0f bonus loyalty points! 🌟</string>
+    <string name="msg_payment_redirecting">💳 Redirecting to payment gateway…</string>
+    <string name="msg_min_amount">Minimum amount is ₹10</string>
+    <string name="label_loyalty_points">Loyalty Points 🌟</string>
+    <string name="label_wallet_balance">Wallet Balance</string>
+    <string name="label_cashback">Cashback 💸</string>
+    <string name="msg_points_info">Every ₹10 spent = 1 point\n100 points = ₹10 cashback</string>
+
+    <!-- Group Order -->
+    <string name="title_group_order">Group Order 👥</string>
+    <string name="label_create_group">Create a Group</string>
+    <string name="label_join_group">Join a Group</string>
+    <string name="label_group_code">Group Code</string>
+    <string name="hint_enter_group_code">Enter 6-digit group code</string>
+    <string name="label_share_code">Share Code</string>
+    <string name="label_copy_code">Copy Code</string>
+    <string name="label_start_ordering">Start Ordering</string>
+    <string name="label_you_are_host">You\'re the Host 👑</string>
+    <string name="label_you_joined">You\'ve joined! 🙌</string>
+    <string name="msg_code_copied">Code copied! 📋</string>
+    <string name="msg_group_created">🎉 Group created! Code: %1$s</string>
+    <string name="msg_group_joined">✅ Joined group %1$s!</string>
+    <string name="error_group_not_found">Group not found. Check the code.</string>
+    <string name="label_members">%1$d member(s)</string>
+    <string name="msg_share_group">Join my SmartBite Group Order! 🍕\nUse code: %1$s</string>
+
+    <!-- Chatbot -->
+    <string name="title_chatbot">Bitey AI Assistant 🤖</string>
+    <string name="hint_message">Ask me anything…</string>
+    <string name="label_quick_menu">Menu</string>
+    <string name="label_quick_track">Track Order</string>
+    <string name="label_quick_deals">Deals</string>
+    <string name="label_quick_help">Help</string>
+    <string name="label_typing">Bitey is typing…</string>
+    <string name="msg_voice_unavailable">Voice search not available</string>
+
+    <!-- Delivery Agent -->
+    <string name="title_delivery_panel">Delivery Panel 🛵</string>
+    <string name="label_available">Available</string>
+    <string name="label_unavailable">Unavailable</string>
+    <string name="label_total_earnings">Total Earnings 💰</string>
+    <string name="label_today_deliveries">Today\'s Deliveries</string>
+    <string name="label_pick_up">Pick Up 📦</string>
+    <string name="label_delivered_action">Delivered ✅</string>
+    <string name="label_navigate">Navigate 🗺️</string>
+
+    <string name="label_resend_prefix">Resend code in </string>
+    <!-- OTP -->
+    <string name="title_otp_verification">OTP Verification</string>
+    <string name="msg_otp_sent">OTP sent to %1$s</string>
+    <string name="label_enter_otp">Enter the 4-digit OTP</string>
+    <string name="label_resend_in">Resend in %1$ds</string>
+    <string name="error_invalid_otp">Invalid OTP. Try again.</string>
+    <string name="msg_otp_verified">✅ Phone verified!</string>
+
+    <!-- Notifications -->
+    <string name="notif_order_placed">Order Placed 📋</string>
+    <string name="notif_order_confirmed">Order Confirmed ✅</string>
+    <string name="notif_order_preparing">Preparing your food 👨‍🍳</string>
+    <string name="notif_order_delivery">Out for Delivery 🛵</string>
+    <string name="notif_order_delivered">Delivered! Enjoy your meal 😋</string>
+    <string name="notif_channel_orders">Order Updates</string>
+    <string name="notif_channel_promo">Deals &amp; Offers</string>
+
+    <!-- Dialog / Alert titles -->
+    <string name="title_confirm">Confirm</string>
+    <string name="title_success">Success</string>
+    <string name="title_error">Error</string>
+    <string name="title_logout">Logout?</string>
+    <string name="msg_confirm_logout">Are you sure you want to logout?</string>
+    <string name="action_logout">Logout</string>
+    <string name="title_rate_order">Rate Your Order ⭐</string>
+    <string name="msg_rate_experience">How was your food experience?</string>
+    <string name="action_submit_rating">Submit Rating</string>
+
+    <!-- Miscellaneous -->
+    <string name="label_no_internet">No internet connection 📶</string>
+    <string name="label_something_wrong">Something went wrong. Please retry.</string>
+    <string name="label_coming_soon">Coming Soon 🚀</string>
+    <string name="label_version">Version %1$s</string>
+    <string name="label_made_with_love">Made with ❤️ in India</string>
+    <string name="label_new_badge">NEW</string>
+    <string name="label_popular_badge">POPULAR</string>
+    <string name="label_best_value_badge">BEST VALUE</string>
+
+    <!-- Group Order screen strings -->
+    <string name="label_group_order_tagline">Order together, pay separately! 🍕</string>
+    <string name="label_group_order_subtitle">Create a group and share the code with friends</string>
+    <string name="label_start_group_order">👥  Start a Group Order</string>
+    <string name="label_create_group_desc">Create a group, share the code, and everyone adds their items from the same restaurant.</string>
+    <string name="label_btn_create_group">Create Group 🚀</string>
+    <string name="label_join_group_order">🔗  Join a Group Order</string>
+    <string name="label_join_group_desc">Got a group code from a friend? Enter it below to join their order.</string>
+    <string name="label_btn_join_group">Join Group 🙌</string>
+    <string name="label_one_member">1 member</string>
+    <string name="label_your_group_code">Your Group Code</string>
+    <string name="label_code_placeholder">------</string>
+
+    <!-- Delivery agent -->
+    <string name="label_active_delivery">Active Delivery 🛵</string>
+    <string name="label_no_active">No active orders</string>
+    <string name="label_waiting_orders">Go online to receive delivery orders</string>
+
+    <!-- Achievements screen -->
+    <string name="label_achievement_unlocked_count">%1$d/%2$d Unlocked</string>
+    <string name="label_trophy_count">%1$d 🏆</string>
+    <string name="label_achievement_unlocked_title">🏆 %1$s — Unlocked!</string>
+    <string name="label_achievement_locked_title">🔒 %1$s</string>
+    <string name="label_achievement_progress_detail">Progress: %1$d / %2$d</string>
+    <string name="label_achievement_reward">Reward: +%1$d points</string>
+    <string name="label_achievement_earned">\n✅ You earned %1$d loyalty points!</string>
+    <string name="label_achievement_ok">Nice! 🎯</string>
+
+    <!-- Search filter chips (SearchActivity) -->
+    <string name="chip_pizza">🍕 Pizza</string>
+    <string name="chip_burger">🍔 Burger</string>
+    <string name="chip_biryani">🍛 Biryani</string>
+    <string name="chip_chinese">🍜 Chinese</string>
+    <string name="chip_south_indian">🥘 South Indian</string>
+    <string name="chip_dessert">🍦 Dessert</string>
+
+    <!-- Meal plan title -->
+    <string name="title_meal_plans">Meal Plans 🥗</string>
+
+    <!-- Restaurant panel bottom nav extra items -->
+    <string name="nav_menu">Menu</string>
+    <string name="nav_stats">Stats 📊</string>
+
+    <!-- Chatbot quick-action chips -->
+    <string name="chip_menu">🍽️ Menu</string>
+    <string name="chip_track">🛵 Track Order</string>
+    <string name="chip_deals">🏷️ Deals</string>
+    <string name="chip_help">❓ Help</string>
+    <string name="chat_input_hint">Ask Bitey anything…</string>
+    <string name="send_button_desc">Send message</string>
+
+    <!-- Toolbar -->
+
+    <string name="label_joined_group">Joined group</string>
+
+    <!-- Success / info messages -->
+
+    <string name="msg_choose_items">Now choose your items!</string>
+
+    <!-- Error messages -->
+    <string name="error_login_required">Please log in to create a group</string>
+
+    <!-- ── Step tracker ──────────────────────────────────────────────── -->
+    <string name="step_check">✓</string>
+
+
+    <!-- ── OrdersFragment toasts / labels ────────────────────────────── -->
+    <string name="msg_map_coming_soon">Live map tracking coming soon!</string>
+    <string name="msg_scratch_won">You won ₹50 off your next order! Code: LUCKY50</string>
+    <string name="msg_coupon_applied">Coupon applied! %1$s</string>
+    <string name="msg_coupon_invalid">Invalid coupon code</string>
+    <string name="label_coupon_applied">✓ Applied</string>
+    <string name="msg_added_to_cart">Items added to cart!</string>
+    <string name="msg_load_orders_failed">Could not load orders. Please try again.</string>
+    <string name="placeholder_restaurant">Restaurant</string>
+
+    <!-- SharedPrefs keys (no user-visible text — but must not be literals) -->
+    <string name="prefs_name" translatable="false">smartbite_prefs</string>
+    <string name="pref_key_coupon" translatable="false">applied_coupon</string>
+
+    <!-- Plurals for order count -->
+    <!-- Add this OUTSIDE the <resources> block as a <plurals> element: -->
+    <!-- <plurals name="order_count">
+             <item quantity="one">%d order</item>
+             <item quantity="other">%d orders</item>
+         </plurals> -->
+
+    <!-- ── ProfileFragment ───────────────────────────────────────────── -->
+    <string name="msg_change_photo_soon">Change photo — coming soon!</string>
+    <string name="msg_notif_on">Notifications enabled</string>
+    <string name="msg_notif_off">Notifications disabled</string>
+    <string name="msg_dark_mode_on">Dark mode on</string>
+    <string name="msg_dark_mode_off">Light mode on</string>
+    <string name="msg_addresses_soon">Saved Addresses — Coming Soon!</string>
+    <string name="msg_offers_soon">Offers &amp; Coupons — Coming Soon!</string>
+    <string name="msg_settings_soon">Settings — Coming Soon!</string>
+    <string name="msg_add_money_soon">Add money — Coming Soon!</string>
+    <string name="msg_redeem_soon">Redeem points — Coming Soon!</string>
+    <string name="msg_no_email_app">No email app found</string>
+    <string name="support_email" translatable="false">support@smartbite.com</string>
+    <string name="support_email_subject">SmartBite Support</string>
+    <string name="label_contact_support">Contact Support</string>
+    <string name="msg_logout_confirm">Are you sure you want to log out of SmartBite?</string>
+    <string name="msg_referral_share">Order delicious food with SmartBite and get ₹100 off! Use my referral code: %1$s\nDownload: https://smartbite.app</string>
+    <string name="referral_code_default" translatable="false">REF100</string>
+    <string name="label_invite_friend">Invite a friend</string>
+
+    <!-- Wallet / Points formatted labels -->
+    <string name="label_wallet_amount">₹%1$d</string>
+    <string name="label_points_amount">%1$d pts</string>
+    <string name="label_level_progress">%1$d / %2$d pts → %3$s</string>
+
+    <!-- Tier labels -->
+    <string name="tier_silver_label">🥈 Silver Member</string>
+    <string name="tier_gold_label">⭐ Gold Member</string>
+    <string name="tier_platinum_label">🏆 Platinum Member</string>
+    <string name="tier_diamond_label">💎 Diamond Member</string>
+    <string name="tier_gold">Gold</string>
+    <string name="tier_platinum">Platinum</string>
+    <string name="tier_diamond">Diamond</string>
+    <string name="tier_max">Max</string>
+
+    <!-- ── OrderManageFragment ───────────────────────────────────────── -->
+    <string name="msg_sound_on">Order alert sound on</string>
+    <string name="msg_sound_off">Order alert sound off</string>
+    <string name="msg_vibrate_on">Vibration on</string>
+    <string name="msg_vibrate_off">Vibration off</string>
+    <string name="label_updated_at">Updated %1$s</string>
+
+</resources>

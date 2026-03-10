@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.smartbite">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.USE_BIOMETRIC" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_LOCATION" />
+
+    <application
+        android:name=".SmartBiteApp"
+        android:allowBackup="true"
+        android:icon="@android:drawable/sym_def_app_icon"
+        android:label="SmartBite"
+        android:roundIcon="@android:drawable/sym_def_app_icon"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.SmartBite"
+        android:usesCleartextTraffic="true"
+        tools:targetApi="31">
+
+        <activity android:name=".activities.SplashActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.SmartBite.Splash">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".activities.LoginActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".activities.RegisterActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".activities.OTPActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".activities.HomeActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".activities.RestaurantDetailActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".activities.CartActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".activities.CheckoutActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".activities.OrderTrackingActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".activities.ProfileActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".activities.WalletActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".activities.RestaurantPanelActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".activities.DeliveryAgentActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".activities.AdminActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".activities.ChatbotActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".activities.GroupOrderActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".activities.MealPlanActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".activities.AchievementsActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".activities.SearchActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".activities.OrderSuccessActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".activities.OrderHistoryActivity" android:screenOrientation="portrait"/>
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="YOUR_GOOGLE_MAPS_API_KEY" />
+
+        <service android:name=".services.FCMService" android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <service android:name=".services.LocationService"
+            android:foregroundServiceType="location"
+            android:exported="false" />
+
+    </application>
+</manifest>

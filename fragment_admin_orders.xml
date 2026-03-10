@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background">
+
+    <!-- GRADIENT HEADER -->
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:background="@drawable/bg_primary_gradient"
+        android:paddingStart="16dp" android:paddingEnd="16dp"
+        android:paddingTop="20dp" android:paddingBottom="14dp"
+        android:orientation="vertical">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:gravity="center_vertical" android:orientation="horizontal">
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Admin" android:textColor="#FFE0C0" android:textSize="12sp"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="All Orders" android:textColor="@color/white"
+                    android:textSize="22sp" android:textStyle="bold"/>
+            </LinearLayout>
+            <TextView android:id="@+id/tvOrderCount"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:background="@drawable/bg_badge_white"
+                android:paddingHorizontal="12dp" android:paddingVertical="5dp"
+                android:textColor="@color/primary" android:textSize="12sp" android:textStyle="bold"/>
+        </LinearLayout>
+        <!-- Search bar -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent" android:layout_height="44dp"
+            android:layout_marginTop="12dp"
+            app:cardCornerRadius="22dp" app:cardElevation="3dp"
+            app:cardBackgroundColor="@color/white">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent"
+                android:gravity="center_vertical" android:paddingStart="14dp" android:orientation="horizontal">
+                <ImageView android:layout_width="16dp" android:layout_height="16dp"
+                    android:src="@android:drawable/ic_menu_search" android:layout_marginEnd="8dp"
+                    android:contentDescription="Search"/>
+                <android.widget.EditText android:id="@+id/etSearchOrders"
+                    android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1"
+                    android:hint="Search by order ID or customer..." android:textSize="13sp"
+                    android:background="@android:color/transparent"
+                    android:imeOptions="actionSearch" android:inputType="text" android:maxLines="1"/>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+    </LinearLayout>
+
+    <!-- STATUS FILTER CHIPS -->
+    <HorizontalScrollView android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:scrollbars="none" android:paddingStart="12dp" android:paddingTop="10dp" android:paddingBottom="4dp">
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chipGroupStatus"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            app:singleSelection="true" app:selectionRequired="true" app:chipSpacingHorizontal="4dp">
+            <com.google.android.material.chip.Chip android:id="@+id/chipAll"
+                style="@style/Widget.MaterialComponents.Chip.Filter"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="All" android:checked="true"/>
+            <com.google.android.material.chip.Chip android:id="@+id/chipPlaced"
+                style="@style/Widget.MaterialComponents.Chip.Filter"
+                android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Placed"/>
+            <com.google.android.material.chip.Chip android:id="@+id/chipPreparing"
+                style="@style/Widget.MaterialComponents.Chip.Filter"
+                android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Preparing"/>
+            <com.google.android.material.chip.Chip android:id="@+id/chipDelivered"
+                style="@style/Widget.MaterialComponents.Chip.Filter"
+                android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Delivered"/>
+            <com.google.android.material.chip.Chip android:id="@+id/chipCancelled"
+                style="@style/Widget.MaterialComponents.Chip.Filter"
+                android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cancelled"/>
+        </com.google.android.material.chip.ChipGroup>
+    </HorizontalScrollView>
+
+    <!-- Shimmer skeleton -->
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/shimmerOrders"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        app:shimmer_duration="1000"
+        android:paddingHorizontal="16dp" android:paddingTop="4dp">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+            <include layout="@layout/item_shimmer_restaurant"/>
+            <include layout="@layout/item_shimmer_restaurant"/>
+            <include layout="@layout/item_shimmer_restaurant"/>
+        </LinearLayout>
+    </com.facebook.shimmer.ShimmerFrameLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1"
+        android:paddingHorizontal="12dp" android:paddingBottom="16dp" android:clipToPadding="false"/>
+
+    <!-- Empty state -->
+    <LinearLayout android:id="@+id/layoutEmpty"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="vertical" android:gravity="center"
+        android:padding="48dp" android:visibility="gone">
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="📋" android:textSize="60sp"/>
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_marginTop="16dp" android:text="No orders found"
+            android:textSize="18sp" android:textStyle="bold" android:textColor="@color/text_primary"/>
+    </LinearLayout>
+</LinearLayout>

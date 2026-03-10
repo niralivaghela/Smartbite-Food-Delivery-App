@@ -1,0 +1,486 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background">
+
+    <!-- HEADER -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/primary"
+        android:orientation="vertical"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/nav_search"
+            android:textColor="@color/white"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="12dp"/>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="3dp"
+            app:cardBackgroundColor="@color/white">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingStart="14dp"
+                android:paddingEnd="14dp">
+                <TextView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:text="🔍"
+                    android:textSize="14sp"
+                    android:gravity="center"
+                    android:layout_marginEnd="8dp"/>
+                <AutoCompleteTextView
+                    android:id="@+id/etSearch"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:hint="@string/hint_search_restaurants"
+                    android:textSize="14sp"
+                    android:textColor="#222222"
+                    android:textColorHint="#AAAAAA"
+                    android:background="@android:color/transparent"
+                    android:completionThreshold="1"
+                    android:imeOptions="actionSearch"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:ellipsize="end"/>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+    </LinearLayout>
+
+    <!-- CATEGORY CHIPS -->
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
+        android:background="@color/white"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:paddingStart="12dp"
+        android:elevation="2dp">
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chipGroupCategories"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:singleSelection="true"
+            app:chipSpacingHorizontal="6dp"/>
+    </HorizontalScrollView>
+
+    <!-- SCROLLABLE CONTENT -->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="80dp">
+
+            <!-- WHAT'S ON YOUR MIND -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/text_primary"
+                android:paddingStart="16dp"
+                android:paddingTop="16dp"
+                android:paddingBottom="12dp"/>
+
+            <!-- ROW 1: All, Pizza, Burger -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="horizontal" android:paddingStart="12dp" android:paddingEnd="12dp" android:layout_marginBottom="8dp">
+
+                <com.google.android.material.card.MaterialCardView android:id="@+id/cardAll"
+                    android:layout_width="0dp" android:layout_height="90dp" android:layout_weight="1"
+                    android:layout_marginEnd="6dp" app:cardCornerRadius="12dp" app:cardElevation="3dp">
+                    <FrameLayout android:layout_width="match_parent" android:layout_height="match_parent">
+                        <ImageView android:id="@+id/imgAll" android:layout_width="match_parent"
+                            android:layout_height="match_parent" android:scaleType="centerCrop" android:background="@color/primary"/>
+                        <View android:layout_width="match_parent" android:layout_height="match_parent" android:background="#44000000"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:layout_gravity="bottom|center_horizontal" android:layout_marginBottom="6dp"
+                            android:text="🍽 All" android:textColor="@color/white" android:textSize="12sp" android:textStyle="bold"/>
+                    </FrameLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView android:id="@+id/cardPizza"
+                    android:layout_width="0dp" android:layout_height="90dp" android:layout_weight="1"
+                    android:layout_marginEnd="6dp" app:cardCornerRadius="12dp" app:cardElevation="3dp">
+                    <FrameLayout android:layout_width="match_parent" android:layout_height="match_parent">
+                        <ImageView android:id="@+id/imgPizza" android:layout_width="match_parent"
+                            android:layout_height="match_parent" android:scaleType="centerCrop" android:background="@color/background"/>
+                        <View android:layout_width="match_parent" android:layout_height="match_parent" android:background="#44000000"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:layout_gravity="bottom|center_horizontal" android:layout_marginBottom="6dp"
+                            android:text="🍕 Pizza" android:textColor="@color/white" android:textSize="12sp" android:textStyle="bold"/>
+                    </FrameLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView android:id="@+id/cardBurger"
+                    android:layout_width="0dp" android:layout_height="90dp" android:layout_weight="1"
+                    app:cardCornerRadius="12dp" app:cardElevation="3dp">
+                    <FrameLayout android:layout_width="match_parent" android:layout_height="match_parent">
+                        <ImageView android:id="@+id/imgBurger" android:layout_width="match_parent"
+                            android:layout_height="match_parent" android:scaleType="centerCrop" android:background="@color/background"/>
+                        <View android:layout_width="match_parent" android:layout_height="match_parent" android:background="#44000000"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:layout_gravity="bottom|center_horizontal" android:layout_marginBottom="6dp"
+                            android:text="🍔 Burger" android:textColor="@color/white" android:textSize="12sp" android:textStyle="bold"/>
+                    </FrameLayout>
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
+
+            <!-- ROW 2: Biryani, Chinese, South Indian -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="horizontal" android:paddingStart="12dp" android:paddingEnd="12dp" android:layout_marginBottom="8dp">
+
+                <com.google.android.material.card.MaterialCardView android:id="@+id/cardBiryani"
+                    android:layout_width="0dp" android:layout_height="90dp" android:layout_weight="1"
+                    android:layout_marginEnd="6dp" app:cardCornerRadius="12dp" app:cardElevation="3dp">
+                    <FrameLayout android:layout_width="match_parent" android:layout_height="match_parent">
+                        <ImageView android:id="@+id/imgBiryani" android:layout_width="match_parent"
+                            android:layout_height="match_parent" android:scaleType="centerCrop" android:background="@color/background"/>
+                        <View android:layout_width="match_parent" android:layout_height="match_parent" android:background="#44000000"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:layout_gravity="bottom|center_horizontal" android:layout_marginBottom="6dp"
+                            android:text="🍛 Biryani" android:textColor="@color/white" android:textSize="12sp" android:textStyle="bold"/>
+                    </FrameLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView android:id="@+id/cardChinese"
+                    android:layout_width="0dp" android:layout_height="90dp" android:layout_weight="1"
+                    android:layout_marginEnd="6dp" app:cardCornerRadius="12dp" app:cardElevation="3dp">
+                    <FrameLayout android:layout_width="match_parent" android:layout_height="match_parent">
+                        <ImageView android:id="@+id/imgChinese" android:layout_width="match_parent"
+                            android:layout_height="match_parent" android:scaleType="centerCrop" android:background="@color/background"/>
+                        <View android:layout_width="match_parent" android:layout_height="match_parent" android:background="#44000000"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:layout_gravity="bottom|center_horizontal" android:layout_marginBottom="6dp"
+                            android:text="🍜 Chinese" android:textColor="@color/white" android:textSize="12sp" android:textStyle="bold"/>
+                    </FrameLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView android:id="@+id/cardSouthIndian"
+                    android:layout_width="0dp" android:layout_height="90dp" android:layout_weight="1"
+                    app:cardCornerRadius="12dp" app:cardElevation="3dp">
+                    <FrameLayout android:layout_width="match_parent" android:layout_height="match_parent">
+                        <ImageView android:id="@+id/imgSouthIndian" android:layout_width="match_parent"
+                            android:layout_height="match_parent" android:scaleType="centerCrop" android:background="@color/background"/>
+                        <View android:layout_width="match_parent" android:layout_height="match_parent" android:background="#44000000"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:layout_gravity="bottom|center_horizontal" android:layout_marginBottom="6dp"
+                            android:text="🥘 South Indian" android:textColor="@color/white" android:textSize="10sp" android:textStyle="bold"/>
+                    </FrameLayout>
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
+
+            <!-- ROW 3: North Indian, Noodles, Thali -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="horizontal" android:paddingStart="12dp" android:paddingEnd="12dp" android:layout_marginBottom="8dp">
+
+                <com.google.android.material.card.MaterialCardView android:id="@+id/cardNorthIndian"
+                    android:layout_width="0dp" android:layout_height="90dp" android:layout_weight="1"
+                    android:layout_marginEnd="6dp" app:cardCornerRadius="12dp" app:cardElevation="3dp">
+                    <FrameLayout android:layout_width="match_parent" android:layout_height="match_parent">
+                        <ImageView android:id="@+id/imgNorthIndian" android:layout_width="match_parent"
+                            android:layout_height="match_parent" android:scaleType="centerCrop" android:background="@color/background"/>
+                        <View android:layout_width="match_parent" android:layout_height="match_parent" android:background="#44000000"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:layout_gravity="bottom|center_horizontal" android:layout_marginBottom="6dp"
+                            android:text="🍲 North Indian" android:textColor="@color/white" android:textSize="10sp" android:textStyle="bold"/>
+                    </FrameLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView android:id="@+id/cardNoodles"
+                    android:layout_width="0dp" android:layout_height="90dp" android:layout_weight="1"
+                    android:layout_marginEnd="6dp" app:cardCornerRadius="12dp" app:cardElevation="3dp">
+                    <FrameLayout android:layout_width="match_parent" android:layout_height="match_parent">
+                        <ImageView android:id="@+id/imgNoodles" android:layout_width="match_parent"
+                            android:layout_height="match_parent" android:scaleType="centerCrop" android:background="@color/background"/>
+                        <View android:layout_width="match_parent" android:layout_height="match_parent" android:background="#44000000"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:layout_gravity="bottom|center_horizontal" android:layout_marginBottom="6dp"
+                            android:text="🍝 Noodles" android:textColor="@color/white" android:textSize="12sp" android:textStyle="bold"/>
+                    </FrameLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView android:id="@+id/cardThali"
+                    android:layout_width="0dp" android:layout_height="90dp" android:layout_weight="1"
+                    app:cardCornerRadius="12dp" app:cardElevation="3dp">
+                    <FrameLayout android:layout_width="match_parent" android:layout_height="match_parent">
+                        <ImageView android:id="@+id/imgThali" android:layout_width="match_parent"
+                            android:layout_height="match_parent" android:scaleType="centerCrop" android:background="@color/background"/>
+                        <View android:layout_width="match_parent" android:layout_height="match_parent" android:background="#44000000"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:layout_gravity="bottom|center_horizontal" android:layout_marginBottom="6dp"
+                            android:text="🍱 Thali" android:textColor="@color/white" android:textSize="12sp" android:textStyle="bold"/>
+                    </FrameLayout>
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
+
+            <!-- ROW 4: Sandwich, Pasta, Rolls -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="horizontal" android:paddingStart="12dp" android:paddingEnd="12dp" android:layout_marginBottom="8dp">
+
+                <com.google.android.material.card.MaterialCardView android:id="@+id/cardSandwich"
+                    android:layout_width="0dp" android:layout_height="90dp" android:layout_weight="1"
+                    android:layout_marginEnd="6dp" app:cardCornerRadius="12dp" app:cardElevation="3dp">
+                    <FrameLayout android:layout_width="match_parent" android:layout_height="match_parent">
+                        <ImageView android:id="@+id/imgSandwich" android:layout_width="match_parent"
+                            android:layout_height="match_parent" android:scaleType="centerCrop" android:background="@color/background"/>
+                        <View android:layout_width="match_parent" android:layout_height="match_parent" android:background="#44000000"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:layout_gravity="bottom|center_horizontal" android:layout_marginBottom="6dp"
+                            android:text="🥪 Sandwich" android:textColor="@color/white" android:textSize="12sp" android:textStyle="bold"/>
+                    </FrameLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView android:id="@+id/cardPasta"
+                    android:layout_width="0dp" android:layout_height="90dp" android:layout_weight="1"
+                    android:layout_marginEnd="6dp" app:cardCornerRadius="12dp" app:cardElevation="3dp">
+                    <FrameLayout android:layout_width="match_parent" android:layout_height="match_parent">
+                        <ImageView android:id="@+id/imgPasta" android:layout_width="match_parent"
+                            android:layout_height="match_parent" android:scaleType="centerCrop" android:background="@color/background"/>
+                        <View android:layout_width="match_parent" android:layout_height="match_parent" android:background="#44000000"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:layout_gravity="bottom|center_horizontal" android:layout_marginBottom="6dp"
+                            android:text="🍝 Pasta" android:textColor="@color/white" android:textSize="12sp" android:textStyle="bold"/>
+                    </FrameLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView android:id="@+id/cardRolls"
+                    android:layout_width="0dp" android:layout_height="90dp" android:layout_weight="1"
+                    app:cardCornerRadius="12dp" app:cardElevation="3dp">
+                    <FrameLayout android:layout_width="match_parent" android:layout_height="match_parent">
+                        <ImageView android:id="@+id/imgRolls" android:layout_width="match_parent"
+                            android:layout_height="match_parent" android:scaleType="centerCrop" android:background="@color/background"/>
+                        <View android:layout_width="match_parent" android:layout_height="match_parent" android:background="#44000000"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:layout_gravity="bottom|center_horizontal" android:layout_marginBottom="6dp"
+                            android:text="🌯 Rolls" android:textColor="@color/white" android:textSize="12sp" android:textStyle="bold"/>
+                    </FrameLayout>
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
+
+            <!-- ROW 5: Momos, Shake, Street Food -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="horizontal" android:paddingStart="12dp" android:paddingEnd="12dp" android:layout_marginBottom="8dp">
+
+                <com.google.android.material.card.MaterialCardView android:id="@+id/cardMomos"
+                    android:layout_width="0dp" android:layout_height="90dp" android:layout_weight="1"
+                    android:layout_marginEnd="6dp" app:cardCornerRadius="12dp" app:cardElevation="3dp">
+                    <FrameLayout android:layout_width="match_parent" android:layout_height="match_parent">
+                        <ImageView android:id="@+id/imgMomos" android:layout_width="match_parent"
+                            android:layout_height="match_parent" android:scaleType="centerCrop" android:background="@color/background"/>
+                        <View android:layout_width="match_parent" android:layout_height="match_parent" android:background="#44000000"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:layout_gravity="bottom|center_horizontal" android:layout_marginBottom="6dp"
+                            android:text="🥟 Momos" android:textColor="@color/white" android:textSize="12sp" android:textStyle="bold"/>
+                    </FrameLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView android:id="@+id/cardShake"
+                    android:layout_width="0dp" android:layout_height="90dp" android:layout_weight="1"
+                    android:layout_marginEnd="6dp" app:cardCornerRadius="12dp" app:cardElevation="3dp">
+                    <FrameLayout android:layout_width="match_parent" android:layout_height="match_parent">
+                        <ImageView android:id="@+id/imgShake" android:layout_width="match_parent"
+                            android:layout_height="match_parent" android:scaleType="centerCrop" android:background="@color/background"/>
+                        <View android:layout_width="match_parent" android:layout_height="match_parent" android:background="#44000000"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:layout_gravity="bottom|center_horizontal" android:layout_marginBottom="6dp"
+                            android:text="🥤 Shake" android:textColor="@color/white" android:textSize="12sp" android:textStyle="bold"/>
+                    </FrameLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView android:id="@+id/cardStreetFood"
+                    android:layout_width="0dp" android:layout_height="90dp" android:layout_weight="1"
+                    app:cardCornerRadius="12dp" app:cardElevation="3dp">
+                    <FrameLayout android:layout_width="match_parent" android:layout_height="match_parent">
+                        <ImageView android:id="@+id/imgStreetFood" android:layout_width="match_parent"
+                            android:layout_height="match_parent" android:scaleType="centerCrop" android:background="@color/background"/>
+                        <View android:layout_width="match_parent" android:layout_height="match_parent" android:background="#44000000"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:layout_gravity="bottom|center_horizontal" android:layout_marginBottom="6dp"
+                            android:text="🌮 Street Food" android:textColor="@color/white" android:textSize="10sp" android:textStyle="bold"/>
+                    </FrameLayout>
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
+
+            <!-- ROW 6: Dessert, Drinks, Healthy -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="horizontal" android:paddingStart="12dp" android:paddingEnd="12dp" android:layout_marginBottom="8dp">
+
+                <com.google.android.material.card.MaterialCardView android:id="@+id/cardDessert"
+                    android:layout_width="0dp" android:layout_height="90dp" android:layout_weight="1"
+                    android:layout_marginEnd="6dp" app:cardCornerRadius="12dp" app:cardElevation="3dp">
+                    <FrameLayout android:layout_width="match_parent" android:layout_height="match_parent">
+                        <ImageView android:id="@+id/imgDessert" android:layout_width="match_parent"
+                            android:layout_height="match_parent" android:scaleType="centerCrop" android:background="@color/background"/>
+                        <View android:layout_width="match_parent" android:layout_height="match_parent" android:background="#44000000"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:layout_gravity="bottom|center_horizontal" android:layout_marginBottom="6dp"
+                            android:text="🍦 Dessert" android:textColor="@color/white" android:textSize="12sp" android:textStyle="bold"/>
+                    </FrameLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView android:id="@+id/cardDrinks"
+                    android:layout_width="0dp" android:layout_height="90dp" android:layout_weight="1"
+                    android:layout_marginEnd="6dp" app:cardCornerRadius="12dp" app:cardElevation="3dp">
+                    <FrameLayout android:layout_width="match_parent" android:layout_height="match_parent">
+                        <ImageView android:id="@+id/imgDrinks" android:layout_width="match_parent"
+                            android:layout_height="match_parent" android:scaleType="centerCrop" android:background="@color/background"/>
+                        <View android:layout_width="match_parent" android:layout_height="match_parent" android:background="#44000000"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:layout_gravity="bottom|center_horizontal" android:layout_marginBottom="6dp"
+                            android:text="☕ Drinks" android:textColor="@color/white" android:textSize="12sp" android:textStyle="bold"/>
+                    </FrameLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView android:id="@+id/cardHealthy"
+                    android:layout_width="0dp" android:layout_height="90dp" android:layout_weight="1"
+                    app:cardCornerRadius="12dp" app:cardElevation="3dp">
+                    <FrameLayout android:layout_width="match_parent" android:layout_height="match_parent">
+                        <ImageView android:id="@+id/imgHealthy" android:layout_width="match_parent"
+                            android:layout_height="match_parent" android:scaleType="centerCrop" android:background="@color/background"/>
+                        <View android:layout_width="match_parent" android:layout_height="match_parent" android:background="#44000000"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:layout_gravity="bottom|center_horizontal" android:layout_marginBottom="6dp"
+                            android:text="🥗 Healthy" android:textColor="@color/white" android:textSize="12sp" android:textStyle="bold"/>
+                    </FrameLayout>
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
+
+            <!-- ROW 7: Bakery, Seafood, BBQ -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="horizontal" android:paddingStart="12dp" android:paddingEnd="12dp" android:layout_marginBottom="16dp">
+
+                <com.google.android.material.card.MaterialCardView android:id="@+id/cardBakery"
+                    android:layout_width="0dp" android:layout_height="90dp" android:layout_weight="1"
+                    android:layout_marginEnd="6dp" app:cardCornerRadius="12dp" app:cardElevation="3dp">
+                    <FrameLayout android:layout_width="match_parent" android:layout_height="match_parent">
+                        <ImageView android:id="@+id/imgBakery" android:layout_width="match_parent"
+                            android:layout_height="match_parent" android:scaleType="centerCrop" android:background="@color/background"/>
+                        <View android:layout_width="match_parent" android:layout_height="match_parent" android:background="#44000000"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:layout_gravity="bottom|center_horizontal" android:layout_marginBottom="6dp"
+                            android:text="🥐 Bakery" android:textColor="@color/white" android:textSize="12sp" android:textStyle="bold"/>
+                    </FrameLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView android:id="@+id/cardSeafood"
+                    android:layout_width="0dp" android:layout_height="90dp" android:layout_weight="1"
+                    android:layout_marginEnd="6dp" app:cardCornerRadius="12dp" app:cardElevation="3dp">
+                    <FrameLayout android:layout_width="match_parent" android:layout_height="match_parent">
+                        <ImageView android:id="@+id/imgSeafood" android:layout_width="match_parent"
+                            android:layout_height="match_parent" android:scaleType="centerCrop" android:background="@color/background"/>
+                        <View android:layout_width="match_parent" android:layout_height="match_parent" android:background="#44000000"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:layout_gravity="bottom|center_horizontal" android:layout_marginBottom="6dp"
+                            android:text="🦞 Seafood" android:textColor="@color/white" android:textSize="12sp" android:textStyle="bold"/>
+                    </FrameLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView android:id="@+id/cardBBQ"
+                    android:layout_width="0dp" android:layout_height="90dp" android:layout_weight="1"
+                    app:cardCornerRadius="12dp" app:cardElevation="3dp">
+                    <FrameLayout android:layout_width="match_parent" android:layout_height="match_parent">
+                        <ImageView android:id="@+id/imgBBQ" android:layout_width="match_parent"
+                            android:layout_height="match_parent" android:scaleType="centerCrop" android:background="@color/background"/>
+                        <View android:layout_width="match_parent" android:layout_height="match_parent" android:background="#44000000"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:layout_gravity="bottom|center_horizontal" android:layout_marginBottom="6dp"
+                            android:text="🔥 BBQ" android:textColor="@color/white" android:textSize="12sp" android:textStyle="bold"/>
+                    </FrameLayout>
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
+
+
+            <!-- VARIETY TITLE: e.g. "Pizza Varieties" -->
+            <TextView
+                android:id="@+id/tvVarietyTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/text_primary"
+                android:paddingStart="16dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="6dp"/>
+
+            <!-- HORIZONTAL FOOD VARIETY STRIP WITH IMAGES -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvFoodVarieties"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clipToPadding="false"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:paddingBottom="12dp"
+                android:nestedScrollingEnabled="false"/>
+
+            <!-- ALL RESTAURANTS LABEL -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/text_primary"
+                android:paddingStart="16dp"
+                android:paddingBottom="8dp"/>
+
+            <!-- RESULTS LIST -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvSearchResults"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:clipToPadding="false"
+                android:nestedScrollingEnabled="false"/>
+
+            <!-- EMPTY STATE -->
+            <LinearLayout
+                android:id="@+id/layoutEmpty"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:visibility="gone">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="🍽️" android:textSize="64sp"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:textSize="18sp" android:textStyle="bold" android:textColor="@color/text_primary"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:textSize="14sp" android:textColor="@color/text_secondary"/>
+            </LinearLayout>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>
