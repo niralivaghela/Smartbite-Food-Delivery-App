@@ -153,6 +153,3 @@ SmartBite/
 | CircleImageView | Profile Pictures |
 
 ---
-
-## 📞 Support
-Built with ❤️ by SmartBite Team
